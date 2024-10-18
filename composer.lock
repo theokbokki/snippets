@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75197aa2b85e0f16ea2288cb8a39dc17",
+    "content-hash": "94ddba83c2550125c8aebe78d075b00d",
     "packages": [
         {
             "name": "brick/math",
@@ -1053,6 +1053,79 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "laravel/folio",
+            "version": "v1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/folio.git",
+                "reference": "3b6e8de60ca7487364d1cd35378069c111963f78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/folio/zipball/3b6e8de60ca7487364d1cd35378069c111963f78",
+                "reference": "3b6e8de60ca7487364d1cd35378069c111963f78",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.19|^11.0",
+                "illuminate/container": "^10.19|^11.0",
+                "illuminate/contracts": "^10.19|^11.0",
+                "illuminate/filesystem": "^10.19|^11.0",
+                "illuminate/pipeline": "^10.19|^11.0",
+                "illuminate/routing": "^10.19|^11.0",
+                "illuminate/support": "^10.19|^11.0",
+                "illuminate/view": "^10.19|^11.0",
+                "php": "^8.1",
+                "spatie/once": "^3.1",
+                "symfony/console": "^6.0|^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.6.0|^9.0",
+                "pestphp/pest": "^2.5",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Folio\\FolioServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "functions.php"
+                ],
+                "psr-4": {
+                    "Laravel\\Folio\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Page based routing for Laravel.",
+            "homepage": "https://github.com/laravel/folio",
+            "keywords": [
+                "laravel",
+                "routing"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/folio/issues",
+                "source": "https://github.com/laravel/folio"
+            },
+            "time": "2024-05-07T13:37:42+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5343,6 +5416,56 @@
             "time": "2024-09-16T10:07:02+00:00"
         },
         {
+            "name": "theokbokki/blade-sfc",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theokbokki/blade-sfc.git",
+                "reference": "3866c58b2c546fd93c45f1e75a2b06c8e1b09ebd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theokbokki/blade-sfc/zipball/3866c58b2c546fd93c45f1e75a2b06c8e1b09ebd",
+                "reference": "3866c58b2c546fd93c45f1e75a2b06c8e1b09ebd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^9.0|^10.0|^11.0",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "php": "^8.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Theokbokki\\BladeSfc\\BladeSfcServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Theokbokki\\BladeSfc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Théo Léonet",
+                    "email": "hello@theoo.dev"
+                }
+            ],
+            "description": "A laravel package that adds blade directives for writing css, scss, javascript and typescript directly in your blade views.",
+            "support": {
+                "issues": "https://github.com/theokbokki/blade-sfc/issues",
+                "source": "https://github.com/theokbokki/blade-sfc/tree/main"
+            },
+            "time": "2024-10-14T06:42:51+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "v2.2.7",
             "source": {
@@ -8770,8 +8893,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "theokbokki/blade-sfc": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
