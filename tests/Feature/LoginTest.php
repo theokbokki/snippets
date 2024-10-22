@@ -17,7 +17,7 @@ it('lets a user with correct credentials login', function () {
             'email' => 'test@example.com',
             'password' => 'password',
         ],
-        ['Referer' => route('login.show')]
+        ['Referer' => route('login')]
     );
 
     $response->assertRedirect(route('home'));
@@ -36,9 +36,9 @@ it('doesn\'t let a user with incorrect credentials login', function () {
             'email' => 'test@example.com',
             'password' => 'wrongpassword',
         ],
-        ['Referer' => route('login.show')]
+        ['Referer' => route('login')]
     );
 
-    $response->assertRedirect(route('login.show'));
+    $response->assertRedirect(route('login'));
     assertGuest();
 });

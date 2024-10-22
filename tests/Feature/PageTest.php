@@ -7,5 +7,5 @@ it('shows the home page', function () {
 });
 
 it('shows the login page', function () {
-    get(route('login.show'))->assertStatus(200);
+    get(route('login'))->assertStatus(200);
 });

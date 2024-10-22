@@ -13,7 +13,7 @@ it('lets a user with correct credentials login', function () {
     ]);
 
     $this->browse(function (Browser $browser) {
-        $browser->visit(route('login.show'))
+        $browser->visit(route('login'))
             ->waitFor('@email')
             ->value('@email', 'test@example.com')
             ->waitFor('@password')
@@ -32,7 +32,7 @@ it('doesn\'t let a user with incorrect credentials login and shows them correct 
 
     $this->browse(function (Browser $browser) {
         // Required input
-        $browser->visit(route('login.show'))
+        $browser->visit(route('login'))
             ->waitFor('@submit')
             ->click('@submit')
             ->waitForTextIn('@email-error', 'The email field is required.')
