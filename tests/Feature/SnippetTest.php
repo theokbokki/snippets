@@ -2,6 +2,7 @@
 
 use App\Models\Snippet;
 use App\Models\User;
+use function Laravel\Prompts\warning;
 use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
 use function Pest\Laravel\actingAs;
@@ -52,4 +53,28 @@ it('doesn\'t let a logged out user create a snippet', function () {
 
     $response->assertStatus(302)
         ->assertRedirectToRoute('login');
+});
+
+it('lets a logged in user edit a snippet', function () {
+    $snippet = Snippet::factory()->create([
+        'title' => 'Test snippet',
+    ]);
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)
+        ->get(route('snippet.show', compact('snippet')));
+
+    $response->assertStatus(200)
+        ->assertSee('Test snippet');
+
+    $response = actingAs($user)
+        ->followingRedirects()
+        ->post(route('snippet.update', compact('snippet')), [
+            'title' => 'Edited snippet',
+            'code' => $snippet->code,
+            'language' => $snippet->language,
+        ]);
+
+    $response->assertSee('Edited snippet');
 });
