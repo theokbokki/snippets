@@ -73,9 +73,8 @@ it('lets a logged in user delete a snippet', function () {
 
 it('lets a logged in user restore a snippet', function () {
     $this->browse(function (Browser $browser) {
-        $snippet = Snippet::factory()->create([
+        $snippet = Snippet::factory()->trashed()->create([
             'title' => 'Test snippet',
-            'deleted_at' => now(),
         ]);
 
         $user = User::factory()->create();

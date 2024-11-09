@@ -100,9 +100,8 @@ it('lets a logged in user delete a snippet', function () {
 });
 
 it('lets a logged in user restore a snippet', function () {
-    $snippet = Snippet::factory()->create([
+    $snippet = Snippet::factory()->trashed()->create([
         'title' => 'Test snippet',
-        'deleted_at' => now(),
     ]);
 
     $user = User::factory()->create();
@@ -118,4 +117,43 @@ it('lets a logged in user restore a snippet', function () {
     $snippet = Snippet::query()->find($snippet->id);
 
     assertNull($snippet->deleted_at);
+});
+
+it('lets a logged in user view the snippets index', function () {
+    $snippets = Snippet::factory()->count(3)->create();
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)->get(route('snippet.list'));
+
+    $response->assertStatus(200)
+        ->assertSee($snippets[0]->title)
+        ->assertSee($snippets[1]->title)
+        ->assertSee($snippets[2]->title);
+});
+
+it('shows deleted and non deleted snippets in the index', function () {
+    $deletedSnippet = Snippet::factory()->trashed()->create();
+    $snippet = Snippet::factory()->create();
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)->get(route('snippet.list'));
+
+    $response->assertStatus(200)
+        ->assertSee($deletedSnippet->title)
+        ->assertSee($snippet->title);
+});
+
+it('shows only non deleted snippets in the homepage', function () {
+    $deletedSnippet = Snippet::factory()->trashed()->create();
+    $snippet = Snippet::factory()->create();
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)->get(route('home'));
+
+    $response->assertStatus(200)
+        ->assertDontSee($deletedSnippet->title)
+        ->assertSee($snippet->title);
 });

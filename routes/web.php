@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateSnippetController;
 use App\Http\Controllers\DeleteSnippetController;
 use App\Http\Controllers\EditSnippetController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListSnippetController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RestoreSnippetController;
 use App\Http\Controllers\ShowSnippetController;
@@ -26,7 +27,11 @@ Route::get('/snippets/create', CreateSnippetController::class)
     ->name('snippet.create')
     ->middleware('auth');
 
-Route::post('/snippets', StoreSnippetController::class)
+Route::get('/snippets', ListSnippetController::class)
+    ->name('snippet.list')
+    ->middleware('auth');
+
+Route::post('/snippets/store', StoreSnippetController::class)
     ->name('snippet.store')
     ->middleware('auth');
 
