@@ -7,9 +7,7 @@
     <section>
         <h2>List of snippets</h2>
         @foreach($snippets as $snippet)
-            <div>
-                <h3>{{ $snippet->title }}</h3>
-            </div>
+            <x-snippet :$snippet />
         @endforeach
     </section>
 </x-layout>

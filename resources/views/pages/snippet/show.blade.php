@@ -8,4 +8,6 @@
             <button type="submit" dusk="delete">Delete</button>
         @endif
     </form>
+
+    <x-snippet :$snippet />
 </x-layout>
