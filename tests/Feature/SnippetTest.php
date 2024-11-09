@@ -78,3 +78,44 @@ it('lets a logged in user edit a snippet', function () {
 
     $response->assertSee('Edited snippet');
 });
+
+it('lets a logged in user delete a snippet', function () {
+    $snippet = Snippet::factory()->create([
+        'title' => 'Test snippet',
+    ]);
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)
+        ->get(route('snippet.show', compact('snippet')));
+
+    $response = actingAs($user)
+        ->post(route('snippet.delete', compact('snippet')));
+
+    $response->assertRedirect(route('snippet.show', compact('snippet')));
+
+    $snippet = Snippet::withTrashed()->find($snippet->id);
+
+    assertNotNull($snippet->deleted_at);
+});
+
+it('lets a logged in user restore a snippet', function () {
+    $snippet = Snippet::factory()->create([
+        'title' => 'Test snippet',
+        'deleted_at' => now(),
+    ]);
+
+    $user = User::factory()->create();
+
+    $response = actingAs($user)
+        ->get(route('snippet.show', compact('snippet')));
+
+    $response = actingAs($user)
+        ->post(route('snippet.restore', compact('snippet')));
+
+    $response->assertRedirect(route('snippet.show', compact('snippet')));
+
+    $snippet = Snippet::query()->find($snippet->id);
+
+    assertNull($snippet->deleted_at);
+});

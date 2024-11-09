@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CreateSnippetController;
+use App\Http\Controllers\DeleteSnippetController;
 use App\Http\Controllers\EditSnippetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RestoreSnippetController;
 use App\Http\Controllers\ShowSnippetController;
 use App\Http\Controllers\StoreLoginController;
 use App\Http\Controllers\StoreSnippetController;
@@ -30,7 +32,8 @@ Route::post('/snippets', StoreSnippetController::class)
 
 Route::get('/snippet/{snippet}', ShowSnippetController::class)
     ->name('snippet.show')
-    ->middleware('auth');
+    ->middleware('auth')
+    ->withTrashed();
 
 Route::get('/snippet/{snippet}/edit', EditSnippetController::class)
     ->name('snippet.edit')
@@ -39,3 +42,12 @@ Route::get('/snippet/{snippet}/edit', EditSnippetController::class)
 Route::post('/snippet/{snippet}/update', UpdateSnippetController::class)
     ->name('snippet.update')
     ->middleware('auth');
+
+Route::post('/snippet/{snippet}/delete', DeleteSnippetController::class)
+    ->name('snippet.delete')
+    ->middleware('auth');
+
+Route::post('/snippet/{snippet}/restore', RestoreSnippetController::class)
+    ->name('snippet.restore')
+    ->middleware('auth')
+    ->withTrashed();
