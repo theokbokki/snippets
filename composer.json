@@ -9,7 +9,8 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "tempest/highlight": "^2.11",
-        "theokbokki/blade-sfc": "dev-main"
+        "theokbokki/blade-sfc": "dev-main",
+        "theokbokki/laravel-filter-search": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

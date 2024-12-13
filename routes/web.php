@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListSnippetController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RestoreSnippetController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShowSnippetController;
 use App\Http\Controllers\StoreLoginController;
 use App\Http\Controllers\StoreSnippetController;
@@ -56,3 +57,6 @@ Route::post('/snippet/{snippet}/restore', RestoreSnippetController::class)
     ->name('snippet.restore')
     ->middleware('auth')
     ->withTrashed();
+
+Route::post('/search', SearchController::class)
+    ->name('search');

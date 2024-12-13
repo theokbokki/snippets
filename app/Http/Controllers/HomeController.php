@@ -13,8 +13,9 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request): View
     {
-        return view('pages.index', [
-            'snippets' => Snippet::all(),
-        ]);
+
+        $snippets = session('search_results', Snippet::all());
+
+        return view('pages.index', compact('snippets'));
     }
 }
