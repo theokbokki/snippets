@@ -15,7 +15,8 @@ class HomeController extends Controller
     {
 
         $snippets = session('search_results', Snippet::all());
+        $activeSnippet = Snippet::query()->find($request->snippet);
 
-        return view('pages.index', compact('snippets'));
+        return view('pages.index', compact('snippets', 'activeSnippet'));
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Snippet;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -15,7 +14,9 @@ class SearchController extends Controller
     {
         $search = $request->input('search');
 
-        $query = Snippet::handleFilterSearch($search);
+        $query = empty($search)
+            ? Snippet::query()
+            : Snippet::handleFilterSearch($search);
 
         session()->flash('search_results', $query->get());
         session()->flash('search', $request->input('search'));

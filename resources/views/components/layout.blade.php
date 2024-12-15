@@ -6,7 +6,18 @@
     <title>Snippets</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="app">
     {{ $slot }}
 </body>
 </html>
+
+@css()
+<style>
+    .app {
+        padding: 2rem 1rem;
+        display: grid;
+        grid-template-columns: 25rem 1fr;
+        gap: 2.5rem;
+    }
+</style>
+@endcss

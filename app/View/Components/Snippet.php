@@ -13,7 +13,7 @@ class Snippet extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public SnippetModel $snippet) {}
+   public function __construct(public ?SnippetModel $snippet) {}
 
     public function getCode()
     {
