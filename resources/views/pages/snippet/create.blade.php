@@ -1,20 +1,20 @@
-<x-layout>
-    <h1>Create snippet</h1>
+<x-admin-layout>
+    <h1 class="admin__title">Create snippet</h1>
 
-    <form action="{{ route('snippet.store') }}" method="post">
+    <form action="{{ route('snippet.store') }}" method="post" class="admin__form">
         @csrf
-        <div>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" dusk="title">
+        <div class="admin__field">
+            <label for="title" class="admin__label">Title</label>
+            <input type="text" name="title" id="title" dusk="title" class="admin__input">
         </div>
-        <div>
-            <label for="code">Code</label>
-            <textarea name="code" id="code" dusk="code"></textarea>
+        <div class="admin__field">
+            <label for="code" class="admin__label">Code</label>
+            <textarea name="code" id="code" dusk="code" class="admin__input admin__input--textarea"></textarea>
         </div>
-        <div>
-            <label for="language">Language</label>
-            <input type="text" name="language" id="language" dusk="language">
+        <div class="admin__field">
+            <label for="language" class="admin__label">Language</label>
+            <input type="text" name="language" id="language" dusk="language" class="admin__input">
         </div>
-        <button type="submit" dusk="submit">Create snippet</button>
+        <x-button type="submit" dusk="submit">Create snippet</x-button>
     </form>
 </x-layout>

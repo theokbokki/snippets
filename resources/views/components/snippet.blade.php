@@ -3,7 +3,20 @@
         <div class="snippet__top">
             <h3 class="snippet__title">{{ $snippet->title }}</h3>
             <x-badge>{{ $snippet->language }}</x-badge>
-            <button type="button" class="button snippet__button">Copy code</button>
+            <div class="snippet__actions">
+                @auth
+                    <form action="{{ route('snippet.'.($snippet->deleted_at ? 'restore' : 'delete'), compact('snippet')) }}" method="post">
+                        @csrf
+                        @if($snippet->deleted_at)
+                            <x-button type="submit" dusk="restore" :modifiers="['secondary']">Recover</x-button>
+                        @else
+                            <x-button type="submit" dusk="delete" :modifiers="['secondary', 'danger']">Delete</x-button>
+                        @endif
+                    </form>
+                   <x-button :href="route('snippet.edit', compact('snippet'))" :modifiers="['secondary']">Edit</x-button>
+                @endauth
+                <x-button type="button">Copy code</x-button>
+            </div>
         </div>
         <p class="snippet__time"><time datetime="{{ $snippet->updated_at->format('Y-m-d\TH:i:s') }}">Last updated on {{ $snippet->updated_at->format('d F Y') }}</time></p>
         <pre class="snippet__code"><code>{!! $getCode !!}</code></pre>
@@ -31,7 +44,9 @@
         font-size: 1.5rem;
     }
 
-    .snippet__button {
+    .snippet__actions {
+        display: flex;
+        gap: .5rem;
         margin-left: auto;
     }
 

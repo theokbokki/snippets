@@ -2,7 +2,9 @@
     <h1 class="sro">Snippets</h1>
     <aside class="index__sidebar">
         @auth
-            <a href="{{ route('snippet.create') }}" dusk="create-snippet">Create snippet</a>
+            <x-button :href="route('snippet.create')" :modifiers="['index-create', 'secondary']">
+                Create snippet
+            </x-button>
         @endauth
 
         @forelse($snippets as $snippet)
@@ -17,7 +19,7 @@
             <div class="index__input">
                 <input type="search" name="search" id="search" value="{{ session('search') }}">
             </div>
-            <button type="submit" class="index__button button">Search</button>
+            <x-button type="submit">Search</x-button>
         </form>
         <a href="#" class="index__link">Advanced filtering tutorial</a>
         <section class="index__snippet">
@@ -85,42 +87,6 @@
             outline: none;
             box-shadow: 0 0 0 1px var(--grey-400),
                 0 0 0 3px var(--grey-100);
-        }
-    }
-
-    .button {
-        width: max-content;
-        padding: 0.625rem 0.75rem;
-        font-family: var(--sans);
-        font-weight: 400;
-        font-size: 1rem;
-        color: var(--white);
-        background: var(--grey-700);
-        border: none;
-        box-shadow: 0 -4px 0 0 var(--grey-900) inset,
-            0 0 0 0 var(--grey-200);
-        border-radius: .5em;
-        cursor: pointer;
-        transition: 200ms box-shadow ease-out,
-            200ms transform ease-out,
-            200ms background ease-out;
-
-        &:hover,
-        &:focus-visible {
-            background: var(--grey-800);
-            box-shadow: 0 -4px 0 0 var(--grey-900) inset,
-                0 0 0 0px var(--grey-200);
-        }
-
-        &:focus-visible {
-            outline: none;
-            box-shadow: 0 -4px 0 0 var(--grey-900) inset,
-                0 0 0 2px var(--grey-200);
-        }
-
-        &:active {
-            background: var(--grey-900);
-            transform: scale(0.95);
         }
     }
 

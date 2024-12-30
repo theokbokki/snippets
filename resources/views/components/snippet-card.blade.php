@@ -1,7 +1,7 @@
 <article class="snippet-card">
     @isset($snippet)
     <div class="snippet-card__top">
-        <h3 class="snippet-card__title"><a href="?snippet={{ $snippet->id }}" class="snippet-card__link">{{ $snippet->title }}</a></h3>
+        <h3 class="snippet-card__title"><a href="{{ isset($href) ? $href : '?snippet='.$snippet->id }}" class="snippet-card__link">{{ $snippet->title }}</a></h3>
         <x-badge>{{ $snippet->language }}</x-badge>
     </div>
     <p class="snippet-card__time"><time datetime="{{ $snippet->updated_at->format('Y-m-d\TH:i:s') }}">Last updated on {{ $snippet->updated_at->format('d F Y') }}</time></p>

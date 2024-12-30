@@ -18,6 +18,8 @@
     --blue-100: #dbeafe;
     --blue-50: #eff6ff;
 
+    --red-600: #dc2626;
+
     --sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
