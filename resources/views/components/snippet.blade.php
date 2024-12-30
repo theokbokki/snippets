@@ -15,7 +15,7 @@
                     </form>
                    <x-button :href="route('snippet.edit', compact('snippet'))" :modifiers="['secondary']">Edit</x-button>
                 @endauth
-                <x-button type="button">Copy code</x-button>
+                <x-button type="button" :modifiers="['copy']">Copy code</x-button>
             </div>
         </div>
         <p class="snippet__time"><time datetime="{{ $snippet->updated_at->format('Y-m-d\TH:i:s') }}">Last updated on {{ $snippet->updated_at->format('d F Y') }}</time></p>
