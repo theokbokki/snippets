@@ -21,7 +21,7 @@
             </div>
             <x-button type="submit">Search</x-button>
         </form>
-        <a href="#" class="index__link">Advanced filtering tutorial</a>
+        <a href="https://github.com/theokbokki/laravel-filter-search#the-syntax" class="index__link" target="_blank">Advanced filtering tutorial</a>
         <section class="index__snippet">
             <x-snippet :snippet="$activeSnippet ?? $snippets->first()"/>
         </section>
